@@ -198,30 +198,40 @@ export default function Layout({ children, currentScreen, onNavigate, onLogout }
             </button>
             
             {/* Hover Dropdown */}
-            <div className="absolute right-0 top-full mt-1 w-80 bg-white rounded-xl shadow-xl border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-              <div className="p-3 border-b border-slate-100">
-                <h3 className="text-sm font-600 text-slate-900">Notifications</h3>
+            <div className="absolute right-0 top-full mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden transform origin-top-right scale-95 group-hover:scale-100">
+              <div className="p-3.5 border-b border-slate-100 bg-slate-50/80 flex items-center justify-between">
+                <h3 className="text-sm font-600 text-slate-800">Notifications</h3>
+                <span className="text-[10px] font-600 bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">3 New</span>
               </div>
-              <div className="max-h-64 overflow-y-auto">
-                <div className="p-3 border-b border-slate-100 hover:bg-slate-50 cursor-pointer">
-                  <div className="text-sm font-500 text-slate-800">New contract signed by Acme Corp</div>
-                  <div className="text-xs text-slate-500 mt-1">2 hours ago</div>
+              <div className="max-h-[320px] overflow-y-auto">
+                <div className="px-4 py-3.5 border-b border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors flex gap-3">
+                  <div className="w-2 h-2 mt-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                  <div>
+                    <div className="text-sm font-500 text-slate-800 leading-tight">New contract signed by Acme Corp</div>
+                    <div className="text-[11px] text-slate-400 mt-1.5">2 hours ago</div>
+                  </div>
                 </div>
-                <div className="p-3 border-b border-slate-100 hover:bg-slate-50 cursor-pointer">
-                  <div className="text-sm font-500 text-slate-800">Invoice #1024 is overdue</div>
-                  <div className="text-xs text-red-500 mt-1">5 hours ago</div>
+                <div className="px-4 py-3.5 border-b border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors flex gap-3">
+                  <div className="w-2 h-2 mt-1.5 rounded-full bg-red-500 flex-shrink-0" />
+                  <div>
+                    <div className="text-sm font-500 text-slate-800 leading-tight">Invoice #1024 is overdue</div>
+                    <div className="text-[11px] text-red-500 mt-1.5">5 hours ago</div>
+                  </div>
                 </div>
-                <div className="p-3 hover:bg-slate-50 cursor-pointer">
-                  <div className="text-sm font-500 text-slate-800">Installation completed for TechFlow</div>
-                  <div className="text-xs text-slate-500 mt-1">1 day ago</div>
+                <div className="px-4 py-3.5 hover:bg-slate-50 cursor-pointer transition-colors flex gap-3">
+                  <div className="w-2 h-2 mt-1.5 rounded-full bg-slate-300 flex-shrink-0" />
+                  <div>
+                    <div className="text-sm font-500 text-slate-600 leading-tight">Installation completed for TechFlow</div>
+                    <div className="text-[11px] text-slate-400 mt-1.5">1 day ago</div>
+                  </div>
                 </div>
               </div>
-              <div className="p-2 border-t border-slate-100">
+              <div className="p-2 border-t border-slate-100 bg-slate-50/50">
                 <button
                   onClick={() => onNavigate('notifications')}
-                  className="w-full py-2 text-sm font-500 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                  className="w-full py-2 text-sm font-500 text-blue-600 hover:text-blue-700 hover:bg-blue-50/80 rounded-xl transition-colors"
                 >
-                  See more notifications
+                  View all notifications
                 </button>
               </div>
             </div>

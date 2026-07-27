@@ -69,11 +69,11 @@ export default function NotificationsScreen({ onNavigate }: Props) {
         </div>
 
         {/* List */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="bg-white rounded-2xl border border-slate-200/80 shadow-md overflow-hidden">
           {displayed.length === 0 && (
-            <div className="flex flex-col items-center justify-center py-16 text-slate-400">
-              <Bell size={32} className="mb-2 text-slate-200" />
-              <p className="text-sm">No {tab === 'unread' ? 'unread ' : ''}notifications</p>
+            <div className="flex flex-col items-center justify-center py-20 text-slate-400">
+              <Bell size={40} className="mb-3 text-slate-200" />
+              <p className="text-sm font-500 text-slate-500">No {tab === 'unread' ? 'unread ' : ''}notifications</p>
             </div>
           )}
           {displayed.map((notif, idx) => {
@@ -83,25 +83,25 @@ export default function NotificationsScreen({ onNavigate }: Props) {
             return (
               <div
                 key={notif.id}
-                className={`flex items-start gap-3.5 p-4 border-b border-slate-50 last:border-0 transition-colors group ${isRead ? 'bg-white' : 'bg-blue-50/30'}`}
+                className={`flex items-start gap-4 p-5 border-b border-slate-100 last:border-0 transition-all duration-200 group cursor-pointer ${isRead ? 'hover:bg-slate-50' : 'bg-sky-50/20 hover:bg-sky-50/50'}`}
               >
-                <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${meta.bg}`}>
-                  <Icon size={16} className={meta.color} />
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm ${meta.bg}`}>
+                  <Icon size={18} className={meta.color} />
                 </div>
-                <div className="flex-1 min-w-0">
+                <div className="flex-1 min-w-0 pt-0.5">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-600 text-slate-900">{notif.title}</span>
+                    <span className="text-sm font-600 text-slate-800">{notif.title}</span>
                     {!isRead && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                      <span className="w-2 h-2 rounded-full bg-blue-500 flex-shrink-0 shadow-sm shadow-blue-500/50" />
                     )}
                   </div>
-                  <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">{notif.description}</p>
-                  <p className="text-xs text-slate-400 mt-1">{notif.time}</p>
+                  <p className="text-[13px] text-slate-500 mt-1 leading-relaxed">{notif.description}</p>
+                  <p className="text-[11px] font-500 text-slate-400 mt-2">{notif.time}</p>
                 </div>
                 {!isRead && (
                   <button
-                    onClick={() => markRead(notif.id)}
-                    className="opacity-0 group-hover:opacity-100 text-xs text-blue-600 hover:text-blue-700 font-500 flex-shrink-0 transition-opacity px-2 py-1 rounded-lg hover:bg-blue-50"
+                    onClick={(e) => { e.stopPropagation(); markRead(notif.id) }}
+                    className="opacity-0 group-hover:opacity-100 text-xs text-blue-600 hover:text-blue-700 font-600 flex-shrink-0 transition-opacity px-3 py-1.5 rounded-lg hover:bg-blue-100/50"
                   >
                     Mark read
                   </button>
