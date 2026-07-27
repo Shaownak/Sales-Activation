@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   LayoutDashboard, Building2, Users, FileText, ShoppingCart,
   Wrench, Calendar, BarChart2, Settings, Bell, Search,
@@ -88,6 +88,12 @@ export default function Layout({ children, currentScreen, onNavigate, onLogout }
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
 
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setSidebarOpen(false)
+    }
+  }, [])
+
   const activeBase = (screen: Screen) => {
     if (currentScreen === screen) return true
     if (screen === 'accounts' && currentScreen === 'account-details') return true
@@ -103,9 +109,17 @@ export default function Layout({ children, currentScreen, onNavigate, onLogout }
       <div className="absolute top-0 right-0 -mr-48 -mt-48 w-96 h-96 rounded-full bg-slate-300/20 blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-64 -ml-48 -mb-48 w-96 h-96 rounded-full bg-blue-300/10 blur-[100px] pointer-events-none" />
 
+      {/* Mobile Overlay */}
+      {sidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
       <aside
-        className={`${sidebarOpen ? 'w-64' : 'w-0 overflow-hidden'} flex-shrink-0 bg-white border-r border-slate-200 flex flex-col transition-all duration-300`}
+        className={`fixed inset-y-0 left-0 z-50 md:relative w-64 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0 md:w-0'} overflow-hidden flex-shrink-0 bg-white border-r border-slate-200 flex flex-col transition-all duration-300`}
       >
         {/* Logo */}
         <div className="h-16 flex items-center px-5 border-b border-slate-100 flex-shrink-0">
@@ -132,7 +146,10 @@ export default function Layout({ children, currentScreen, onNavigate, onLogout }
                 return (
                   <button
                     key={item.id}
-                    onClick={() => onNavigate(item.id)}
+                    onClick={() => {
+                      onNavigate(item.id);
+                      if (window.innerWidth < 768) setSidebarOpen(false);
+                    }}
                     className={`w-full flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm font-500 transition-all duration-200 hover:translate-x-1 mb-0.5 ${
                       active
                         ? 'bg-blue-50 text-blue-700 shadow-sm border border-blue-100'
@@ -175,7 +192,7 @@ export default function Layout({ children, currentScreen, onNavigate, onLogout }
           </button>
 
           {/* Search */}
-          <div className="flex-1 max-w-md relative">
+          <div className="flex-1 max-w-md relative hidden md:block">
             <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
