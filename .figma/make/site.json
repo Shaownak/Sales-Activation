@@ -1,0 +1,10 @@
+{
+  "description": "Streamlines sales to activation workflows with comprehensive dashboards, CRM, contract, order, installation, invoicing, and reporting tools for enterprises.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
