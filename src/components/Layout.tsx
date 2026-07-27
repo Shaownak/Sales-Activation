@@ -189,13 +189,43 @@ export default function Layout({ children, currentScreen, onNavigate, onLogout }
           <div className="flex-1" />
 
           {/* Notifications */}
-          <button
-            onClick={() => onNavigate('notifications')}
-            className="relative p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
-          >
-            <Bell size={18} />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full" />
-          </button>
+          <div className="relative group">
+            <button
+              className="relative p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
+            >
+              <Bell size={18} />
+              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
+            </button>
+            
+            {/* Hover Dropdown */}
+            <div className="absolute right-0 top-full mt-1 w-80 bg-white rounded-xl shadow-xl border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="p-3 border-b border-slate-100">
+                <h3 className="text-sm font-600 text-slate-900">Notifications</h3>
+              </div>
+              <div className="max-h-64 overflow-y-auto">
+                <div className="p-3 border-b border-slate-100 hover:bg-slate-50 cursor-pointer">
+                  <div className="text-sm font-500 text-slate-800">New contract signed by Acme Corp</div>
+                  <div className="text-xs text-slate-500 mt-1">2 hours ago</div>
+                </div>
+                <div className="p-3 border-b border-slate-100 hover:bg-slate-50 cursor-pointer">
+                  <div className="text-sm font-500 text-slate-800">Invoice #1024 is overdue</div>
+                  <div className="text-xs text-red-500 mt-1">5 hours ago</div>
+                </div>
+                <div className="p-3 hover:bg-slate-50 cursor-pointer">
+                  <div className="text-sm font-500 text-slate-800">Installation completed for TechFlow</div>
+                  <div className="text-xs text-slate-500 mt-1">1 day ago</div>
+                </div>
+              </div>
+              <div className="p-2 border-t border-slate-100">
+                <button
+                  onClick={() => onNavigate('notifications')}
+                  className="w-full py-2 text-sm font-500 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                >
+                  See more notifications
+                </button>
+              </div>
+            </div>
+          </div>
 
           {/* User menu */}
           <div className="relative">
