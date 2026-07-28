@@ -74,9 +74,9 @@ export default function SettingsScreen({ onNavigate }: Props) {
         <p className="text-sm text-slate-500 mt-0.5">Manage your account and platform preferences</p>
       </div>
 
-      <div className="flex gap-5">
+      <div className="flex flex-col md:flex-row gap-5">
         {/* Left tabs */}
-        <aside className="w-48 flex-shrink-0">
+        <aside className="w-full md:w-48 flex-shrink-0">
           <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-2">
             {settingsTabs.map((tab) => (
               <button

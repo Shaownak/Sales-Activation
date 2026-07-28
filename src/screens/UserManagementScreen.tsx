@@ -42,7 +42,8 @@ export default function UserManagementScreen({ onNavigate }: Props) {
       </div>
 
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-        <table className="w-full">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[600px]">
           <thead>
             <tr className="border-b border-slate-100">
               {['User', 'Email', 'Role', 'Status', 'Last Login', ''].map((h) => (
@@ -117,6 +118,7 @@ export default function UserManagementScreen({ onNavigate }: Props) {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   )

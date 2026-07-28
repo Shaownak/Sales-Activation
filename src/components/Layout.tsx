@@ -87,6 +87,7 @@ export default function Layout({ children, currentScreen, onNavigate, onLogout }
   const [searchQuery, setSearchQuery] = useState('')
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false)
 
   useEffect(() => {
     if (window.innerWidth < 768) {
@@ -206,8 +207,9 @@ export default function Layout({ children, currentScreen, onNavigate, onLogout }
           <div className="flex-1" />
 
           {/* Notifications */}
-          <div className="relative group">
+          <div className="relative md:group">
             <button
+              onClick={() => setIsNotificationOpen(!isNotificationOpen)}
               className="relative p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
             >
               <Bell size={18} />
@@ -215,7 +217,7 @@ export default function Layout({ children, currentScreen, onNavigate, onLogout }
             </button>
             
             {/* Hover Dropdown */}
-            <div className="absolute right-0 top-full mt-2 w-[calc(100vw-2rem)] sm:w-80 max-w-[320px] sm:max-w-none bg-white rounded-2xl shadow-2xl border border-slate-200/80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden transform origin-top-right scale-95 group-hover:scale-100">
+            <div className={`absolute right-0 top-full mt-2 w-[calc(100vw-2rem)] sm:w-80 max-w-[320px] sm:max-w-none bg-white rounded-2xl shadow-2xl border border-slate-200/80 transition-all duration-200 z-50 overflow-hidden transform origin-top-right ${isNotificationOpen ? 'opacity-100 visible scale-100' : 'opacity-0 invisible scale-95 md:group-hover:opacity-100 md:group-hover:visible md:group-hover:scale-100'}`}>
               <div className="p-3.5 border-b border-slate-100 bg-slate-50/80 flex items-center justify-between">
                 <h3 className="text-sm font-600 text-slate-800">Notifications</h3>
                 <span className="text-[10px] font-600 bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">3 New</span>
@@ -245,7 +247,10 @@ export default function Layout({ children, currentScreen, onNavigate, onLogout }
               </div>
               <div className="p-2 border-t border-slate-100 bg-slate-50/50">
                 <button
-                  onClick={() => onNavigate('notifications')}
+                  onClick={() => {
+                    setIsNotificationOpen(false)
+                    onNavigate('notifications')
+                  }}
                   className="w-full py-2 text-sm font-500 text-blue-600 hover:text-blue-700 hover:bg-blue-50/80 rounded-xl transition-colors"
                 >
                   View all notifications

@@ -60,9 +60,9 @@ export default function CalendarScreen({ onNavigate }: Props) {
   }
 
   return (
-    <div className="flex h-full">
+    <div className="flex flex-col md:flex-row h-full overflow-y-auto md:overflow-y-hidden">
       {/* Sidebar */}
-      <aside className="w-56 flex-shrink-0 bg-white border-r border-slate-200 p-4 flex flex-col gap-5">
+      <aside className="w-full md:w-56 flex-shrink-0 bg-white border-b md:border-b-0 md:border-r border-slate-200 p-4 flex flex-col gap-5">
         <button
           onClick={() => setShowModal(true)}
           className="flex items-center gap-2 w-full px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-500 rounded-lg transition-colors shadow-sm"
