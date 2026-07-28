@@ -215,7 +215,7 @@ export default function Layout({ children, currentScreen, onNavigate, onLogout }
             </button>
             
             {/* Hover Dropdown */}
-            <div className="absolute right-0 top-full mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden transform origin-top-right scale-95 group-hover:scale-100">
+            <div className="absolute right-0 top-full mt-2 w-[calc(100vw-2rem)] sm:w-80 max-w-[320px] sm:max-w-none bg-white rounded-2xl shadow-2xl border border-slate-200/80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden transform origin-top-right scale-95 group-hover:scale-100">
               <div className="p-3.5 border-b border-slate-100 bg-slate-50/80 flex items-center justify-between">
                 <h3 className="text-sm font-600 text-slate-800">Notifications</h3>
                 <span className="text-[10px] font-600 bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">3 New</span>

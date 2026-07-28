@@ -68,7 +68,7 @@ export default function SettingsScreen({ onNavigate }: Props) {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
       <div className="mb-6">
         <h1 className="text-xl font-700 text-slate-900">Settings</h1>
         <p className="text-sm text-slate-500 mt-0.5">Manage your account and platform preferences</p>

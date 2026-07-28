@@ -28,7 +28,7 @@ export default function ContractDetailsScreen({ id, onNavigate }: Props) {
   const contract = contracts.find((c) => c.id === id) || contracts[0]
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
       <button
         onClick={() => onNavigate('contracts')}
         className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-800 mb-5"

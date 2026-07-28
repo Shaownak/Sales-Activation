@@ -29,7 +29,7 @@ export default function UserManagementScreen({ onNavigate }: Props) {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-xl font-700 text-slate-900">User Management</h1>

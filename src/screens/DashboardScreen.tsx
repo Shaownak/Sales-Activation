@@ -99,7 +99,7 @@ const colorMap: Record<string, string> = {
 
 export default function DashboardScreen({ onNavigate }: Props) {
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-4 md:p-6 space-y-6">
       {/* Header */}
       <div>
         <h1 className="text-xl font-700 text-slate-900">Dashboard</h1>
@@ -107,7 +107,7 @@ export default function DashboardScreen({ onNavigate }: Props) {
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4">
         {kpis.map((kpi) => (
           <button
             key={kpi.title}
@@ -143,7 +143,7 @@ export default function DashboardScreen({ onNavigate }: Props) {
       </div>
 
       {/* Charts row */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 sm:gap-4">
         {/* Bar chart */}
         <div className="xl:col-span-2 bg-white rounded-2xl border border-slate-200/60 shadow-sm p-5 hover:shadow-lg transition-shadow duration-300 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
           <div className="flex items-center justify-between mb-5">
@@ -212,7 +212,7 @@ export default function DashboardScreen({ onNavigate }: Props) {
       </div>
 
       {/* Bottom row */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
         {/* Recent activities */}
         <div className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-5 hover:shadow-lg transition-shadow duration-300 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
           <h2 className="text-sm font-600 text-slate-900 mb-4">Recent Activities</h2>

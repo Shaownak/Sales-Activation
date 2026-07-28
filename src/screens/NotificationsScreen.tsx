@@ -31,7 +31,7 @@ export default function NotificationsScreen({ onNavigate }: Props) {
   const unreadCount = notifications.filter((n) => !readIds.includes(n.id)).length
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-xl font-700 text-slate-900">Notifications</h1>

@@ -33,7 +33,7 @@ export default function InvoiceDetailsScreen({ id, onNavigate }: Props) {
   const invoice = invoices.find((i) => i.id === id) || invoices[0]
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
       <button
         onClick={() => onNavigate('invoices')}
         className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-800 mb-5"

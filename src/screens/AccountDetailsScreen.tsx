@@ -43,7 +43,7 @@ export default function AccountDetailsScreen({ id, onNavigate }: Props) {
   ]
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
       <button
         onClick={() => onNavigate('accounts')}
         className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-800 mb-5"
