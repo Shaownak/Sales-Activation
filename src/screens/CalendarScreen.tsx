@@ -73,23 +73,23 @@ export default function CalendarScreen({ onNavigate }: Props) {
 
         {/* Mini calendar */}
         <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-600 text-slate-700">{MONTHS[month].slice(0, 3)} {year}</span>
-            <div className="flex gap-0.5">
-              <button onClick={prevMonth} className="p-0.5 rounded hover:bg-slate-100"><ChevronLeft size={13} className="text-slate-400" /></button>
-              <button onClick={nextMonth} className="p-0.5 rounded hover:bg-slate-100"><ChevronRight size={13} className="text-slate-400" /></button>
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-sm font-600 text-slate-700">{MONTHS[month]} {year}</span>
+            <div className="flex gap-1">
+              <button onClick={prevMonth} className="p-1 rounded-lg hover:bg-slate-100 transition-colors"><ChevronLeft size={16} className="text-slate-500" /></button>
+              <button onClick={nextMonth} className="p-1 rounded-lg hover:bg-slate-100 transition-colors"><ChevronRight size={16} className="text-slate-500" /></button>
             </div>
           </div>
-          <div className="grid grid-cols-7 gap-0.5">
+          <div className="grid grid-cols-7 gap-1">
             {DAYS.map((d) => (
-              <div key={d} className="text-center text-[9px] font-600 text-slate-400 py-0.5">{d[0]}</div>
+              <div key={d} className="text-center text-[11px] font-600 text-slate-400 py-1">{d[0]}</div>
             ))}
             {getCalendarDays(year, month).map((day, i) => {
               const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear()
               return (
                 <div
                   key={i}
-                  className={`text-center text-[10px] py-0.5 rounded cursor-pointer ${day ? 'hover:bg-slate-100' : ''} ${isToday ? 'bg-blue-600 text-white rounded-full' : 'text-slate-600'}`}
+                  className={`flex items-center justify-center h-7 text-xs rounded-lg cursor-pointer transition-colors ${day ? 'hover:bg-slate-100' : ''} ${isToday ? 'bg-blue-600 text-white font-600 shadow-sm shadow-blue-500/30' : 'text-slate-700 font-500'}`}
                 >
                   {day || ''}
                 </div>
