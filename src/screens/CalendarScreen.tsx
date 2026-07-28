@@ -121,22 +121,24 @@ export default function CalendarScreen({ onNavigate }: Props) {
       {/* Main */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Toolbar */}
-        <div className="flex items-center gap-3 px-5 py-3.5 border-b border-slate-200 bg-white">
-          <button onClick={prevMonth} className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-500"><ChevronLeft size={16} /></button>
-          <h2 className="text-sm font-700 text-slate-900 w-36">{MONTHS[month]} {year}</h2>
-          <button onClick={nextMonth} className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-500"><ChevronRight size={16} /></button>
-          <button
-            onClick={() => { setYear(today.getFullYear()); setMonth(today.getMonth()) }}
-            className="ml-2 px-3 py-1.5 text-xs font-500 text-slate-600 border border-slate-200 rounded-lg hover:bg-slate-50"
-          >
-            Today
-          </button>
-          <div className="ml-auto flex rounded-lg border border-slate-200 overflow-hidden">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 px-4 py-3.5 border-b border-slate-200 bg-white">
+          <div className="flex items-center gap-2">
+            <button onClick={prevMonth} className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-500"><ChevronLeft size={16} /></button>
+            <h2 className="text-sm font-700 text-slate-900 w-32">{MONTHS[month]} {year}</h2>
+            <button onClick={nextMonth} className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-500"><ChevronRight size={16} /></button>
+            <button
+              onClick={() => { setYear(today.getFullYear()); setMonth(today.getMonth()) }}
+              className="ml-2 px-3 py-1.5 text-xs font-500 text-slate-600 border border-slate-200 rounded-lg hover:bg-slate-50 hidden sm:block"
+            >
+              Today
+            </button>
+          </div>
+          <div className="sm:ml-auto flex w-full sm:w-auto rounded-lg border border-slate-200 overflow-hidden">
             {(['month', 'week', 'day'] as const).map((v) => (
               <button
                 key={v}
                 onClick={() => setView(v)}
-                className={`px-3 py-1.5 text-xs font-500 capitalize ${view === v ? 'bg-blue-600 text-white' : 'bg-white text-slate-600 hover:bg-slate-50'}`}
+                className={`flex-1 sm:flex-none px-3 py-1.5 text-xs font-500 capitalize ${view === v ? 'bg-blue-600 text-white' : 'bg-white text-slate-600 hover:bg-slate-50'}`}
               >
                 {v}
               </button>

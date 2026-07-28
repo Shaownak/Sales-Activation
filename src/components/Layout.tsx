@@ -207,7 +207,13 @@ export default function Layout({ children, currentScreen, onNavigate, onLogout }
           <div className="flex-1" />
 
           {/* Notifications */}
-          <div className="relative md:group">
+          <div className="relative md:group z-50">
+            {isNotificationOpen && (
+              <div 
+                className="fixed inset-0 z-40"
+                onClick={() => setIsNotificationOpen(false)}
+              />
+            )}
             <button
               onClick={() => setIsNotificationOpen(!isNotificationOpen)}
               className="relative p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
@@ -217,7 +223,7 @@ export default function Layout({ children, currentScreen, onNavigate, onLogout }
             </button>
             
             {/* Hover Dropdown */}
-            <div className={`absolute right-0 top-full mt-2 w-[calc(100vw-2rem)] sm:w-80 max-w-[320px] sm:max-w-none bg-white rounded-2xl shadow-2xl border border-slate-200/80 transition-all duration-200 z-50 overflow-hidden transform origin-top-right ${isNotificationOpen ? 'opacity-100 visible scale-100' : 'opacity-0 invisible scale-95 md:group-hover:opacity-100 md:group-hover:visible md:group-hover:scale-100'}`}>
+            <div className={`fixed left-4 right-4 top-16 w-auto sm:absolute sm:inset-auto sm:right-0 sm:top-full sm:mt-2 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/80 transition-all duration-200 z-50 overflow-hidden transform origin-top-right ${isNotificationOpen ? 'opacity-100 visible scale-100' : 'opacity-0 invisible scale-95 md:group-hover:opacity-100 md:group-hover:visible md:group-hover:scale-100'}`}>
               <div className="p-3.5 border-b border-slate-100 bg-slate-50/80 flex items-center justify-between">
                 <h3 className="text-sm font-600 text-slate-800">Notifications</h3>
                 <span className="text-[10px] font-600 bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">3 New</span>
