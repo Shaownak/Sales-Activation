@@ -62,7 +62,7 @@ export default function CalendarScreen({ onNavigate }: Props) {
   return (
     <div className="flex flex-col md:flex-row h-full overflow-y-auto md:overflow-y-hidden">
       {/* Sidebar */}
-      <aside className="w-full md:w-56 flex-shrink-0 bg-white border-b md:border-b-0 md:border-r border-slate-200 p-4 flex flex-col gap-5">
+      <aside className="w-full md:w-64 flex-shrink-0 bg-white border-b md:border-b-0 md:border-r border-slate-200 p-5 flex flex-col gap-6">
         <button
           onClick={() => setShowModal(true)}
           className="flex items-center gap-2 w-full px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-500 rounded-lg transition-colors shadow-sm"
@@ -73,23 +73,23 @@ export default function CalendarScreen({ onNavigate }: Props) {
 
         {/* Mini calendar */}
         <div>
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-600 text-slate-700">{MONTHS[month]} {year}</span>
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-base font-600 text-slate-800">{MONTHS[month]} {year}</span>
             <div className="flex gap-1">
-              <button onClick={prevMonth} className="p-1 rounded-lg hover:bg-slate-100 transition-colors"><ChevronLeft size={16} className="text-slate-500" /></button>
-              <button onClick={nextMonth} className="p-1 rounded-lg hover:bg-slate-100 transition-colors"><ChevronRight size={16} className="text-slate-500" /></button>
+              <button onClick={prevMonth} className="p-1.5 rounded-lg hover:bg-slate-100 transition-colors"><ChevronLeft size={18} className="text-slate-500" /></button>
+              <button onClick={nextMonth} className="p-1.5 rounded-lg hover:bg-slate-100 transition-colors"><ChevronRight size={18} className="text-slate-500" /></button>
             </div>
           </div>
           <div className="grid grid-cols-7 gap-1">
             {DAYS.map((d) => (
-              <div key={d} className="text-center text-[11px] font-600 text-slate-400 py-1">{d[0]}</div>
+              <div key={d} className="text-center text-xs font-600 text-slate-400 py-1.5">{d[0]}</div>
             ))}
             {getCalendarDays(year, month).map((day, i) => {
               const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear()
               return (
                 <div
                   key={i}
-                  className={`flex items-center justify-center h-7 text-xs rounded-lg cursor-pointer transition-colors ${day ? 'hover:bg-slate-100' : ''} ${isToday ? 'bg-blue-600 text-white font-600 shadow-sm shadow-blue-500/30' : 'text-slate-700 font-500'}`}
+                  className={`flex items-center justify-center h-8 text-sm rounded-lg cursor-pointer transition-colors ${day ? 'hover:bg-slate-100' : ''} ${isToday ? 'bg-blue-600 text-white font-600 shadow-sm shadow-blue-500/30' : 'text-slate-700 font-500'}`}
                 >
                   {day || ''}
                 </div>
